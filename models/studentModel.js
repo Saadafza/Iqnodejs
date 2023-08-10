@@ -22,12 +22,14 @@ const studentSchema = new Schema({
     image: {
         type: String,
         required: [true, "image is required"],
-        get: linkUrl
+        get: linkurl
     }
 }, {toJSON: {getters: true} } )
 
-function linkUrl(image) {
-    return "http://localhost:3003/" + image;
+function linkurl(image){
+    const name = image.replace("uploads\\","")
+    return "https://iqnodejs-git-main-saadafza.vercel.app/"+name
+//return " http://localhost:3003/" +image
 }
 
 const StudentModel = mongoose.model('Student', studentSchema);
